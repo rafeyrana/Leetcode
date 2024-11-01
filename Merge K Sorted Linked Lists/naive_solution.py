@@ -7,8 +7,7 @@ class ListNode:
 class Solution:    
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         '''
-        make a new list which will be the merged list
-        for the list of heads of the linked list for each pass, keep a track of the min value at the node
+        make a new list which will be the merged list for the list of heads of the linked list for each pass, keep a track of the min value at the node
         pointed to by the head in the list and once a pass over the array is done, make that node go to next
         if any node is pointing to null then skip it
         when the min value does not change or the index is not updated for any pass over the list means that all lists have been exhausted and there are no more.
