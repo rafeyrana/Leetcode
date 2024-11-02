@@ -10,6 +10,7 @@ class Solution:
 
         '''
         same thing as the same tree problem but run it on the current node, if not true then run a recursive call on the children nodes. this however is inefficient as it as it is O(n**2)
+        there is a more optimal solution but that is too confusing and will not be asked in a real interview
         '''
         def same_tree(node, sub_tree):
             if not node and not sub_tree:
