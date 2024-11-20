@@ -1,0 +1,55 @@
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+       # the best solution to this would be an inverse solution where we can store the max distance any fruit has from the rotten fruits of which there can be many
+       # we can check this for all of them but since we need to also make sure all fruits are rotten in that time we need to keep a track of each node was visited or not
+        # lets return a bool to indicate if we even found one
+
+        rows = len(grid)
+        cols = len(grid[0])
+        max_dist = -1
+        directions = [[0,1], [0, -1], [1, 0], [-1, 0]]
+        # First check if there are any fresh oranges
+        has_fresh = False
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    has_fresh = True
+                    break
+        
+        # If no fresh oranges, return 0
+        if not has_fresh:
+            return 0
+        def bfs(r,c):
+            q = collections.deque()
+            q.append((r, c))
+            visited = set()
+            visited.add((r,c))
+            steps = 0
+            while q:
+                for _ in range(len(q)):
+                    row, col = q.popleft()
+                    if grid[row][col] == 2:
+                        return steps, True
+                    for dx, dy in directions:
+                        new_row = row + dx
+                        new_col = col + dy
+                        if ( 0 <= new_row < rows) and (0 <= new_col < cols) and (new_row, new_col) not in visited and grid[new_row][new_col] != 0:
+                            q.append((new_row, new_col))
+                            visited.add((new_row, new_col))
+                steps += 1
+            return steps, False
+
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    dist, found = bfs(r, c)
+                    max_dist = max(max_dist, dist)
+
+                    if not found :
+                        return -1
+        return max_dist
+                    
+        
+
+        
