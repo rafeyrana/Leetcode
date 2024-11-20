@@ -8,17 +8,6 @@ class Solution:
         cols = len(grid[0])
         max_dist = -1
         directions = [[0,1], [0, -1], [1, 0], [-1, 0]]
-        # First check if there are any fresh oranges
-        has_fresh = False
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == 1:
-                    has_fresh = True
-                    break
-        
-        # If no fresh oranges, return 0
-        if not has_fresh:
-            return 0
         def bfs(r,c):
             q = collections.deque()
             q.append((r, c))
@@ -48,7 +37,7 @@ class Solution:
 
                     if not found :
                         return -1
-        return max_dist
+        return 0 if max_dist == -1 else max_dist
                     
         
 
