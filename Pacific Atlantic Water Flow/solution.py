@@ -3,7 +3,7 @@ class Solution:
         # so the solution is to get the intersection of the sets of nodes visitable by both oceans
         # we can run a bfs on the pacific and atlantic nodes, store them both and return the intersection of them.
         # this however is a naive solution we will make us go over the whole array atleast twice
-        # another solution can be to maybe have two different visited lists, if it is in both then we add it to common_visitors_list
+        # another solution can be to maybe have two different visited lists, if it is in both then we add it to common_visitors_list but run bfs only once if you can 
         ROWS, COLS = len(heights), len(heights[0])
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         pac = [[False] * COLS for _ in range(ROWS)]
