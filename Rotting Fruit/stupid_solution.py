@@ -1,6 +1,9 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-      
+       # the best solution to this would be an inverse solution where we can store the max distance any fruit has from the rotten fruits of which there can be many
+       # we can check this for all of them but since we need to also make sure all fruits are rotten in that time we need to keep a track of each node was visited or not
+        # lets return a bool to indicate if we even found one
+
         rows = len(grid)
         cols = len(grid[0])
         max_dist = -1
