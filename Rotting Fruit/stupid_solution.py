@@ -19,7 +19,12 @@ class Solution:
                     row, col = q.popleft()
                     if grid[row][col] == 2:
                         return steps, True
-                   
+                    for dx, dy in directions:
+                        new_row = row + dx
+                        new_col = col + dy
+                        if ( 0 <= new_row < rows) and (0 <= new_col < cols) and (new_row, new_col) not in visited and grid[new_row][new_col] != 0:
+                            q.append((new_row, new_col))
+                            visited.add((new_row, new_col))
                 steps += 1
             return steps, False
 
