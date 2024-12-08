@@ -8,8 +8,8 @@ class Solution:
         interval = 0
         for q in sorted(queries):
             # add only the intervals which start before or at the given query so we dont have all the intervals in the heap only the ones that can be valid for this one
-            while interval < len(intervals) and intervals[i][0] <= q:
-                l , r = intervals[i]
+            while interval < len(intervals) and intervals[interval][0] <= q:
+                l , r = intervals[interval]
                 heapq.heappush(min_heap , (r - l + 1, r)) # save the interval length and the ending of it
                 interval += 1 # keeping track of the current interval
 
@@ -18,6 +18,6 @@ class Solution:
                 heapq.heappop(min_heap)
             # now if the heap still contains something in this interval then we can add it
             results[q] = min_heap[0][0] if min_heap else - 1
-            return [results[q] for q in queries]
+        return [results[q] for q in queries]
 
 
