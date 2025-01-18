@@ -1,16 +1,14 @@
 class TreeNode:
     def __init__(self):
         self.chars = {} # this will contain the mapping from the characters to the their nodes in the tree and if they are a word or not (char : (Node, isWord))
-    
+
     def insertChar(self,c):
         self.chars[c] = [TreeNode(), False]
 
 class PrefixTree:
-
     def __init__(self):
         self.root = TreeNode() # the main root which will be the origin for each word search from origin
         
-
     def insert(self, word: str) -> None:
         curr_node = self.root
         for i in range(len(word)):
@@ -42,5 +40,4 @@ class PrefixTree:
                 return False
             curr_node = curr_node.chars[c][0]
         return True
-        
-        
+    
