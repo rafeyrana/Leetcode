@@ -37,8 +37,7 @@ class Solution:
 
             # 2. Get ranks of the parents
             r1 , r2 = rank[p1], rank[p2]
-            
-
+        
             # #. Now we will compare the ranks and add the smaller component to the larger one, update parents and add ranks
             if r1 >= r2:
                 parent[p2] = p1
@@ -52,5 +51,3 @@ class Solution:
         for n1, n2 in edges:
             components -= union(n1, n2) # auto changes the components if combined
         return components
-                
-        
