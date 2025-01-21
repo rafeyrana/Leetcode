@@ -3,7 +3,7 @@ class Solution:
         results = []
         nums.sort()
         for i, num in enumerate(nums):
-            if num > 0:
+            if num > 0: # since the array is sorted if the number is more than 0 we will not be finding the solution down the line as the numbers are going to be greater than 0
                 break
             if i > 0 and nums[i] == nums[i - 1]: # duplicate case
                 continue
