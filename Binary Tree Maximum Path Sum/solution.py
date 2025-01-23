@@ -7,12 +7,6 @@
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-
-        '''
-        run dfs on this problem, get the left and right sum. now at this point we need to check if this node and its left and right are the max sum path. so first we do that
-        and then we return the node.val + max(left, right) because the node above can only go to one of the sides below so we choose the max side
-        
-        '''
         self.max_sum = float("-inf")
 
 
