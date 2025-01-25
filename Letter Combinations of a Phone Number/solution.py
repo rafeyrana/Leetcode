@@ -1,7 +1,6 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         results = []
-
         num_mapping = {
         2: ["a", "b", "c"],
         3: ["d", "e", "f"],
