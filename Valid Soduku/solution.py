@@ -29,5 +29,4 @@ class Solution:
                             if board[i][j] in block_seen:
                                 return False
                             block_seen.add(board[i][j])
-
         return True
