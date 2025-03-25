@@ -1,30 +1,34 @@
 class Solution:
-
+    # we will need to implement a unique way to store the numbers and their lengths
+    # does this contain numbers?
+    # use a delimiter that is relatively rare and not usually so important that it can be overlooked in real life production systems
+    # we will use the rarest character i can find coupled with the length of the word to make sure that the string is properly decoded
+    # the char we are using is : 𓀴 which is an egyptian hyroglyphic
+    # the string will look something like 1𓀴i2𓀴am3𓀴rafey
+    # each word can be more than a 10 characters long so finding a single int wont be enough in this case
     def encode(self, strs: List[str]) -> str:
-        # using a number to denote the number of characters in the word with some sort of delimiter before we join them
-        # so essentially that would be neet would become 4^neet , we will be suing rare charater that is not really used a lot to avoid a lot of confusion in encoding and decding
-        final_str = ""
+        encoded_string = ""
         for word in strs:
-            final_str += str(len(word)) + "^"  + word
-        return final_str
+            encoded_string += str(len(word)) + "𓀴" + word
+        return encoded_string
 
+        
 
     def decode(self, s: str) -> List[str]:
-        # now in the decode we can expect a string lke 4^neet4^code4^love3^you
-        # we will iterate through the list, find the length until the delimiter, once we find the delimiter the  string which we will use with the current index and string indexing to remove and move the current pointer forward
-        curr = 0
         result = []
-        while curr < len(s):
-                end_ptr = curr
-                while s[end_ptr] != "^":
-                    end_ptr += 1
-            
-                word_length = int(s[curr: end_ptr])
-                curr = end_ptr + 1
-                end_ptr = curr + word_length
-                
-                word = s[curr : end_ptr]
-                result.append(word)
-                curr = end_ptr
-                
+        if not s or len(s) < 3:
+            return result
+        l = 0 
+        while l < len(s):
+            size = ""
+            while s[l] != "𓀴":
+                size += s[l]
+                l += l
+            print(size)
+            size_int = int(size)
+            l += 1
+            word = s[l : l + size_int]
+            result.append(word)
+            l += size_int
         return result
+    
