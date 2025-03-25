@@ -16,8 +16,6 @@ class Solution:
 
     def decode(self, s: str) -> List[str]:
         result = []
-        if not s or len(s) < 3:
-            return result
         l = 0 
         while l < len(s):
             size = ""
