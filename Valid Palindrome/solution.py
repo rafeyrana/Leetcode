@@ -1,17 +1,21 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        l , r = 0 , len(s) - 1
-        while l <= r:
-            while l < r and not self.alphaNum(s[l]):
-                l += 1
-            while r > l and not self.alphaNum(s[r]):
-                r -= 1
-            if s[l].lower() != s[r].lower():
+        # first we need to clean the string to keep only the alphanumeric characters
+        # then we can use a two pointer approach to check the characters on both sides for this
+        def clean_string(s : str) -> str:
+            res = ""
+            for char in s:
+                if "A" <= char <= "Z" or "a" <= char <= "z" or "0" <= char <= "9":
+                    res += char.lower()
+            return res
+        cleaned_string = clean_string(s)
+        # now that we have the cleaned string we can move on to checking if its a palindrome
+        # being a palindrome means that characters at the same index from opposite sides should be the same
+        # this calls for a two pointer approach
+        l , r = 0 , len(cleaned_string) - 1
+        while l < r:
+            if cleaned_string[l] != cleaned_string[r]:
                 return False
             l += 1
             r -= 1
-        return False
-    def alphaNum(self, c):
-        return (ord('A') <= ord(c) <= ord('Z') or 
-                ord('a') <= ord(c) <= ord('z') or 
-                ord('0') <= ord(c) <= ord('9'))
+        return True
